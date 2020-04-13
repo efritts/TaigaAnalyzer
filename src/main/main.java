@@ -18,10 +18,12 @@ public class main {
         String projectName = "amehlhase316-kaiserschmarn";
         String slugUrl = "https://api.taiga.io/api/v1/projects/by_slug?slug=";
         String projectSlugUrl = slugUrl + projectName;
-        StatsGetter();
-        TasksGetter();
-        UserStoriesGetter();
+        
         GetProjectId(projectSlugUrl);
+
+        StatsGetter();
+        //TasksGetter();
+        //UserStoriesGetter();
         
     }
     
@@ -38,21 +40,21 @@ public class main {
     }
     
     public static void StatsGetter() {
-        String stats = "projects/357854/stats";
+        String stats = "projects/" + projectId + "/stats";
         String statsUrl = baseUrl + stats;
         data.jsonData(statsUrl);
         
     }
     
     public static void TasksGetter() {
-        String tasks = "tasks?project=357854";
+        String tasks = "tasks?project=" + projectId;
         String tasksUrl = baseUrl + tasks;
         data.jsonData(tasksUrl);
         
     }
     
     public static void UserStoriesGetter() {
-        String userStories = "userstories?project=357854";
+        String userStories = "userstories?project=" + projectId;
         String usUrl = baseUrl + userStories;
         data.jsonData(usUrl);
     }
